@@ -1,0 +1,50 @@
+﻿<Window x:Class="StoreModel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreModel"
+        xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf" 
+        mc:Ignorable="d"
+        Title="Приложение" Height="375" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="AntiqueWhite">
+            <StackPanel>
+                <Label>Коэф. k:</Label>
+                <TextBox x:Name="K_input" Margin="5,5,5,5"></TextBox>
+                <Label>Дней в периоде:</Label>
+                <TextBox x:Name="N_input" Margin="5,5,5,5"></TextBox>
+                <Label>Стоимость хранения:</Label>
+                <TextBox x:Name="Ch_input" Margin="5,5,5,5"></TextBox>
+                <Label>Стоимость перевозок:</Label>
+                <TextBox x:Name="C0_input" Margin="5,5,5,5"></TextBox>
+                <Label x:Name="Col_dostav_label">Количество доставок: </Label>
+                <Button Margin="5,5,5,5" Click="Button_Click">Выполнить</Button>
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0">Дата</Label>
+                    <TextBox x:Name="Date_input" Grid.Column="1"></TextBox>
+                </Grid>
+                <Button Margin="5,5,5,5" Click="Button_Click_1">Сохранить данные</Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <oxy:Plot>
+                <oxy:Plot.Axes>
+                    <oxy:LinearAxis Position="Bottom" Title="Номер дня"/>
+                    <oxy:LinearAxis Position="Left" Title="Количество товара"/>
+                </oxy:Plot.Axes>
+                <oxy:LineSeries x:Name="LineSeries1" Title="Спрос" DataFieldX="X" DataFieldY="Y"/>
+                <oxy:LineSeries x:Name="LineSeries2" Title="Товара на складе" DataFieldX="X" DataFieldY="Y" />
+                <oxy:LineSeries x:Name="LineSeries3" Title="Товара на складе с поставками" DataFieldX="X" DataFieldY="Y" />
+            </oxy:Plot>
+        </Grid>
+    </Grid>
+</Window>
